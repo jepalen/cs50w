@@ -1,0 +1,136 @@
+<!--DOM is Document Object Model, think of it like a tree-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello</title>
+    <link rel="stylesheet" href="styles.css">
+    <!--sass styles.scss:sstyles.css for compiling the scss file-->
+    <link rel="stylesheet" href="sstyles.css">
+    <link rel="stylesheet" href="nesting.css">
+    <link rel="stylesheet" href="inheritance.css">
+
+</head>
+
+<body>
+    <!-- viewport is used to make the website responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1 id="title">Wellcome to my website</h1>
+    <section class="container">
+        <div class="left.half special1">
+            <h2>2nd Bigger Heading</h2>
+            <h3>3rd Bigger Heading</h3>
+            <h4>4th Bigger Heading</h4>
+            <h5>5th Bigger Heading</h5>
+            <h6>Smallest Heading</h6>
+            <p>An unordered list:</p>
+            <ul>
+                <li><a href="https://www.cs50.net">CS50 click me</a></li>
+                <li><a href="https://www.google.com">Google click me</a></li>
+                <li><a href="https://www.youtube.com">Youtube click me</a></li>
+            </ul>
+            <p>An ordered list:</p>
+            <ol>
+                <li>Item A</li>
+                <ul>
+                    <li>Item A1</li>
+                    <li>Item A2</li>
+                    <li>Item A3</li>
+                </ul>
+                <li>Item B</li>
+                <li>Item C</li>
+            </ol>
+            <p>Table:</p>
+            <table class="special">
+                <thead>
+                    <tr>
+                        <th>Ocean</th>
+                        <th>Maximum Depth</th>
+                        <th>Average Depth</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Atlantic Ocean</td>
+                        <td>11,034 meters</td>
+                        <td>3,646 meters</td>
+                    </tr>
+                    <tr>
+                        <td>Pacific Ocean</td>
+                        <td>10,984 meters</td>
+                        <td>3,646 meters</td>
+                    </tr>
+            </table>
+
+            <p>Image:</p>
+            <img src="cat.jpg" alt="cat" width="100" height="100">
+            <p>Link:</p>
+            <a href="https://www.cs50.net">CS50 click me</a>
+        </div>
+        <div class="right.half special2">
+            <div>
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div>
+                favorite color:
+                <input type="radio" id="color" name="color" value="red">red
+                <input type="radio" id="color" name="color" value="blue">blue
+                <input type="radio" id="color" name="color" value="green">green
+
+            </div>
+            <div>
+                <input name="vehicle" list="vehicles" placeholder="I have a bike">
+                <datalist id="vehicles">
+                    <option value="Bike">
+                    <option value="Car">
+                    <option value="Truck">
+                    <option value="Boat">
+                </datalist>
+            </div>
+            <div>
+                <button id="button1"> hover me to change my color</button>
+            </div>
+            <div id="grid">
+                <div class="grid-item">1</div>
+                <div class="grid-item">2</div>
+                <div class="grid-item">3</div>
+                <div class="grid-item">4</div>
+                <div class="grid-item">5</div>
+                <div class="grid-item">6</div>
+                <div class="grid-item">7</div>
+                <div class="grid-item">8</div>
+                <div class="grid-item">9</div>
+                <div class="grid-item">10</div>
+                <div class="grid-item">11</div>
+                <div class="grid-item">12</div>
+            </div>
+
+            <div class="nesting">
+                <p>this is a paragraph inside a div</p>
+
+                <p>list inside a div</p>
+                <ul>
+                    <li>list item 1</li>
+                    <li>list item 2</li>
+                    <li>list item 3</li>
+                </ul>
+            </div>
+            <p>paragraph outside of a div</p>
+
+            <div class="inheritance">
+                <p class="success">this is a success message using scss inheritance </p>
+                <p class="error">this is an error message using scss inheritance</p>
+                <p class="warning">this is a warning message using scss inheritance</p>
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>
