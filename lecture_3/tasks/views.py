@@ -8,7 +8,6 @@ class NewTaskForm(forms.Form):
     task = forms.CharField(label="New Task")
 
 
-
 def index(request):
     if "tasks" not in request.session:
         request.session["tasks"] = []
