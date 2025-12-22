@@ -1,0 +1,33 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+{{title}}
+
+{% endblock %}
+
+{% block body %}
+
+{% if error %}
+<p>{{ error }}</p>
+{% else %}
+<div class="main-form">
+    <form action="{% url 'encyclopedia:new' %}" method="post">
+        {% csrf_token %}
+
+        <div class="form-row">
+            {{ form.title.label_tag }}
+            {{ form.title }}
+        </div>
+
+        {{ form.edit }}
+
+        <div class="form-row">
+            {{ form.content.label_tag }}
+            {{ form.content }}
+        </div>
+
+        <button type="submit">Save Article</button>
+    </form>
+</div>
+{% endif %}
+{% endblock %}

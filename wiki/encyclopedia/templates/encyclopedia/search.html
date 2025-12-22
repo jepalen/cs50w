@@ -1,12 +1,15 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-Encyclopedia
+{{title}}
 {% endblock %}
 
 {% block body %}
-<h1>All Pages</h1>
-
+{% if content %}
+<div class="markdown-container">
+    {{ content|safe }}
+</div>
+{% elif entries %}
 <ul>
     {% for entry in entries %}
     <li>
@@ -14,5 +17,8 @@ Encyclopedia
     </li>
     {% endfor %}
 </ul>
+{% else %}
+<h3>:( Could not find any results for your search.</h3>
+{% endif %}
 
 {% endblock %}

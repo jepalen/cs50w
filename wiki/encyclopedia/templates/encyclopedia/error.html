@@ -1,0 +1,9 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block body %}
+<div class="error-page">
+    <h1> :(</h1>
+    <h2>The web page you are looking for does not exist</h2>
+    <a href="{% url 'encyclopedia:index' %}">Return to the homepage</a>
+</div>
+{% endblock %}
