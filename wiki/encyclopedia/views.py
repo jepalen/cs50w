@@ -19,7 +19,7 @@ def index(request):
 
 def error_404(request, exception):
     return render(request, "encyclopedia/error.html", status=404)
-
+    
 def article(request, title):
     if request.method == "POST":
         return render(request, "encyclopedia/new.html", {
