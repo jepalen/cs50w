@@ -1,0 +1,23 @@
+{% extends "auctions/layout.html" %}
+{% block body %}
+<div class="category-list">
+    {% if listings %}
+    {% for listing in listings %}
+    <div class="auction-card position-relative">
+        <div class="auction-card-image">
+            <img src="{{ listing.image }}" alt="{{ listing.title }}">
+        </div>
+
+        <div class="auction-card-content">
+            <h3>{{ listing.title }}</h3>
+            <p>{{ listing.description }}</p>
+            <p>Price: <strong>${{ listing.lowest_bid }}</strong></p>
+            <a href="{% url 'auctions:listing' listing.id %}" class="stretched-link">View Listing</a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>No items in this category.</p>
+    {% endif %}
+</div>
+{% endblock %}

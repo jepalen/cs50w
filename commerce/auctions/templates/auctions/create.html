@@ -1,0 +1,13 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+{% if user.is_authenticated %}
+<form action="{% url 'auctions:create' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Listing</button>
+</form>
+{% else %}
+<p>Please log in to create a listing.</p>
+{% endif %}
+{% endblock %}

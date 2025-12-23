@@ -1,7 +1,68 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>Active Listings</h2>
+<h2>Active Listings</h2>
 
-    TODO
+{% for listing in listings %}
+{% if listing.enabled %}
+<div class="auction-card position-relative">
+    <div class="auction-card-image">
+        <img src="{{ listing.image }}" alt="{{ listing.title }}">
+    </div>
+
+    <div class="auction-card-content">
+        <h3>{{ listing.title }}</h3>
+        <p>{{ listing.description }}</p>
+        <p>Price: <strong>${{ listing.lowest_bid }}</strong></p>
+        <a href="{% url 'auctions:listing' listing.id %}" class="stretched-link">View Listing</a>
+    </div>
+</div>
+{% elif not listing.enabled and listing.winner == request.user %}
+<h2>Won Listings</h2>
+<div class="auction-card position-relative">
+    <div class="auction-card-image">
+        <img src="{{ listing.image }}" alt="{{ listing.title }}">
+    </div>
+
+    <div class="auction-card-content">
+        <h3>{{ listing.title }}</h3>
+        <p>{{ listing.description }}</p>
+        <p>Price: <strong>${{ listing.lowest_bid }}</strong></p>
+        <p>You won this listing for ${{ listing.actual_bid }}</p>
+        <a href="{% url 'auctions:listing' listing.id %}" class="stretched-link">View Listing</a>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+
+
+{% if request.user.is_authenticated %}
+<h2>My Listings</h2>
+{% if my_listings %}
+{% for listing in my_listings %}
+<div class="auction-card position-relative">
+    <div class="auction-card-image">
+        <img src="{{ listing.image }}" alt="{{ listing.title }}">
+    </div>
+
+    <div class="auction-card-content">
+        <h3>{{ listing.title }}</h3>
+        <p>{{ listing.description }}</p>
+        <p>Price: <strong>${{ listing.lowest_bid }}</strong></p>
+        {% if listing.enabled %}
+        <a href="{% url 'auctions:listing' listing.id %}" class="stretched-link">View Listing</a>
+        {% else %}
+        <p>You closed this listing.</p>
+        <p>the winner is {{ listing.winner }} for ${{ listing.actual_bid }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<p>Begin and add a new listing.</p>
+<a href="{% url 'auctions:create' %}">Create Listing</a>
+{% endif %}
+{% else %}
+<p>Please log in to see your listings.</p>
+{% endif %}
 {% endblock %}
