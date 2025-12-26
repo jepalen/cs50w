@@ -2,7 +2,6 @@
 
 {% block body %}
 <h2>Active Listings</h2>
-
 {% for listing in listings %}
 {% if listing.enabled %}
 <div class="auction-card position-relative">
@@ -17,8 +16,12 @@
         <a href="{% url 'auctions:listing' listing.id %}" class="stretched-link">View Listing</a>
     </div>
 </div>
-{% elif not listing.enabled and listing.winner == request.user %}
+{% endif %}
+{% endfor %}
+
 <h2>Won Listings</h2>
+{% for listing in listings %}
+{% if not listing.enabled and listing.winner == request.user %}
 <div class="auction-card position-relative">
     <div class="auction-card-image">
         <img src="{{ listing.image }}" alt="{{ listing.title }}">
